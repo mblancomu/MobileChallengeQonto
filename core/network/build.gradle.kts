@@ -5,12 +5,24 @@ plugins {
     id("kotlinx-serialization")
 }
 
+val hostUrl: String = com.android.build.gradle.internal.cxx.configure.gradleLocalProperties(rootDir).getProperty("HOST_URL")
+
 android {
     namespace = "com.manuelblanco.mobilechallenge.core.network"
     compileSdk = 33
 
     buildFeatures {
         buildConfig = true
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField("String", "HOST_URL", hostUrl)
+        }
+
+        release {
+            buildConfigField("String", "HOST_URL", hostUrl)
+        }
     }
 
     testOptions {

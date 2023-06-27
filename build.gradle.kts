@@ -4,6 +4,11 @@ buildscript {
         google()
         mavenCentral()
     }
+    dependencies {
+        classpath(libs.google.oss.licenses.plugin) {
+            exclude(group = "com.google.protobuf")
+        }
+    }
 }
 
 plugins {
@@ -13,9 +18,6 @@ plugins {
     alias(libs.plugins.gms) apply false
     alias(libs.plugins.hilt) apply false
     alias(libs.plugins.ksp) apply false
-    alias(libs.plugins.secrets) apply false
-    id("com.android.library") version "8.0.2" apply false
-    id("org.jetbrains.kotlin.android") version "1.8.0" apply false
 }
 
 tasks.register("clean", Delete::class) {

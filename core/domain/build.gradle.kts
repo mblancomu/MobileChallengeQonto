@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
-
 plugins {
     id("mobilechallenge.android.library")
     id("mobilechallenge.android.library.jacoco")
