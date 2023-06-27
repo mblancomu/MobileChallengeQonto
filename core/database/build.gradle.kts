@@ -1,0 +1,19 @@
+plugins {
+    id("mobilechallenge.android.library")
+    id("mobilechallenge.android.library.jacoco")
+    id("mobilechallenge.android.hilt")
+    id("mobilechallenge.android.room")
+}
+
+android {
+    namespace = "com.manuelblanco.mobilechallenge.core.database"
+}
+
+dependencies {
+    implementation(project(":core:model"))
+
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.kotlinx.datetime)
+
+    androidTestImplementation(project(":core:testing"))
+}
