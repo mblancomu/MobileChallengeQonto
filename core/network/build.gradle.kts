@@ -1,6 +1,5 @@
 plugins {
     id("mobilechallenge.android.library")
-    id("mobilechallenge.android.library.jacoco")
     id("mobilechallenge.android.hilt")
     id("kotlinx-serialization")
 }
@@ -34,8 +33,8 @@ android {
 
 dependencies {
 
-/*    implementation(project(":core:common"))
-    implementation(project(":core:model"))*/
+    implementation(project(":core:common"))
+    implementation(project(":core:model"))
     implementation(libs.coil.kt)
     implementation(libs.coil.kt.svg)
     implementation(libs.kotlinx.coroutines.android)

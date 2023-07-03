@@ -14,9 +14,8 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "MobileChallenge"
+rootProject.name = "mobilechallenge"
 include(":app")
-include(":core")
 include(":core:designsystem")
 include(":core:data")
 include(":core:domain")
@@ -27,4 +26,5 @@ include(":core:ui")
 include(":core:model")
 include(":core:testing")
 include(":core:common")
-include(":feature")
+include(":feature:profiles")
+include(":feature:detail")

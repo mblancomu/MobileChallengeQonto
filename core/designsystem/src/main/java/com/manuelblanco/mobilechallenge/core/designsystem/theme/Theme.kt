@@ -81,8 +81,6 @@ val DarkColorScheme = darkColorScheme(
     scrim = DarkColorScrim,
 )
 
-val LightGradientColors = GradientColors(container = seed)
-
 val DarkGradientColors = GradientColors(container = Color.Black)
 
 val LightBackgroundTheme = BackgroundTheme(color = seed)
@@ -92,21 +90,10 @@ val DarkBackgroundTheme = BackgroundTheme(color = Color.Black)
 @Composable
 fun ChallengeTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    androidTheme: Boolean = false,
-    disableDynamicTheming: Boolean = true,
     content: @Composable () -> Unit,
 ) {
     // Color scheme
     val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
-
-    // Gradient colors
-    val emptyGradientColors = GradientColors(container = colorScheme.surfaceColorAtElevation(2.dp))
-
-    val gradientColors = GradientColors(
-        top = colorScheme.inverseOnSurface,
-        bottom = colorScheme.primaryContainer,
-        container = colorScheme.surface,
-    )
 
     // Background theme
     val backgroundTheme = BackgroundTheme(
@@ -118,7 +105,6 @@ fun ChallengeTheme(
 
     // Composition locals
     CompositionLocalProvider(
-        LocalGradientColors provides gradientColors,
         LocalBackgroundTheme provides backgroundTheme,
         LocalTintTheme provides tintTheme,
     ) {

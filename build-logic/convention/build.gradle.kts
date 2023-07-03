@@ -36,10 +36,6 @@ gradlePlugin {
             id = "mobilechallenge.android.application"
             implementationClass = "AndroidApplicationConventionPlugin"
         }
-        register("androidApplicationJacoco") {
-            id = "mobilechallenge.android.application.jacoco"
-            implementationClass = "AndroidApplicationJacocoConventionPlugin"
-        }
         register("androidLibraryCompose") {
             id = "mobilechallenge.android.library.compose"
             implementationClass = "AndroidLibraryComposeConventionPlugin"
@@ -51,10 +47,6 @@ gradlePlugin {
         register("androidFeature") {
             id = "mobilechallenge.android.feature"
             implementationClass = "AndroidFeatureConventionPlugin"
-        }
-        register("androidLibraryJacoco") {
-            id = "mobilechallenge.android.library.jacoco"
-            implementationClass = "AndroidLibraryJacocoConventionPlugin"
         }
         register("androidTest") {
             id = "mobilechallenge.android.test"

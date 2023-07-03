@@ -1,6 +1,5 @@
 plugins {
     id("mobilechallenge.android.library")
-    id("mobilechallenge.android.library.jacoco")
     id("mobilechallenge.android.hilt")
     id("kotlinx-serialization")
 }
@@ -26,7 +25,8 @@ dependencies {
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.datetime)
     implementation(libs.kotlinx.serialization.json)
+    implementation(libs.androidx.paging.runtime)
+    implementation(libs.retrofit.core)
 
-//    testImplementation(project(":core:datastore-test"))
     testImplementation(project(":core:testing"))
 }

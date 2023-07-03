@@ -1,6 +1,5 @@
 plugins {
     id("mobilechallenge.android.library")
-    id("mobilechallenge.android.library.jacoco")
     id("mobilechallenge.android.hilt")
     id("mobilechallenge.android.room")
 }
@@ -13,7 +12,8 @@ dependencies {
     implementation(project(":core:model"))
 
     implementation(libs.kotlinx.coroutines.android)
-    implementation(libs.kotlinx.datetime)
+    implementation(libs.androidx.paging.common)
+    implementation(libs.room.paging)
 
     androidTestImplementation(project(":core:testing"))
 }

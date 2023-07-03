@@ -1,5 +1,7 @@
 package com.manuelblanco.mobilechallenge.core.network.retrofit
 
+import com.manuelblanco.mobilechallenge.core.network.model.NetworkProfileResults
+import com.manuelblanco.mobilechallenge.core.network.model.profile.NetworkProfile
 import kotlinx.serialization.Serializable
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -9,11 +11,15 @@ import retrofit2.http.Query
  */
 interface RetrofitNetworkApi {
 
-    @GET(value = "items")
-    suspend fun getTopics(
-        @Query("id") ids: List<String>?,
-    ): NetworkResponse<List<Nothing>>
+    @GET("/api/?seed=foobar")
+    suspend fun getProfiles(
+        @Query("page") page: Int?
+    ): NetworkProfileResults
 
+    @GET("/api/")
+    suspend fun getProfile(
+        @Query("id") id: String?,
+    ): NetworkResponse<NetworkProfile>
 
 }
 

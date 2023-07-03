@@ -1,6 +1,5 @@
 plugins {
     id("mobilechallenge.android.library")
-    id("mobilechallenge.android.library.jacoco")
     kotlin("kapt")
 }
 
@@ -11,9 +10,11 @@ android {
 dependencies {
     implementation(project(":core:data"))
     implementation(project(":core:model"))
+    implementation(project(":core:database"))
     implementation(libs.hilt.android)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.datetime)
+    implementation(libs.androidx.paging.common)
 
     kapt(libs.hilt.compiler)
 

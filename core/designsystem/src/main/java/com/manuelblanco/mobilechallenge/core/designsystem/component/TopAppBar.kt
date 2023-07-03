@@ -1,6 +1,7 @@
 package com.manuelblanco.mobilechallenge.core.designsystem.component
 
 import android.R
+import android.annotation.SuppressLint
 import androidx.annotation.StringRes
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -26,33 +27,37 @@ import com.manuelblanco.mobilechallenge.core.designsystem.icon.ChallengeIcons
 @Composable
 fun ChallengeTopAppBar(
     @StringRes titleRes: Int,
-    navigationIcon: ImageVector,
-    navigationIconContentDescription: String?,
-    actionIcon: ImageVector,
-    actionIconContentDescription: String?,
-    modifier: Modifier = Modifier,
+    navigationIcon: ImageVector? = null,
+    navigationIconContentDescription: String? = null,
+    actionIcon: ImageVector? = null,
+    actionIconContentDescription: String? = "",
+    @SuppressLint("ModifierParameter") modifier: Modifier = Modifier,
     colors: TopAppBarColors = TopAppBarDefaults.centerAlignedTopAppBarColors(),
     onNavigationClick: () -> Unit = {},
     onActionClick: () -> Unit = {},
 ) {
     CenterAlignedTopAppBar(
-        title = { Text(text = stringResource(id = titleRes)) },
+        title = { Text(color = MaterialTheme.colorScheme.background, text = stringResource(id = titleRes)) },
         navigationIcon = {
             IconButton(onClick = onNavigationClick) {
-                Icon(
-                    imageVector = navigationIcon,
-                    contentDescription = navigationIconContentDescription,
-                    tint = MaterialTheme.colorScheme.onSurface,
-                )
+                if (navigationIcon != null) {
+                    Icon(
+                        imageVector = navigationIcon,
+                        contentDescription = navigationIconContentDescription,
+                        tint = MaterialTheme.colorScheme.onSurface,
+                    )
+                }
             }
         },
         actions = {
             IconButton(onClick = onActionClick) {
-                Icon(
-                    imageVector = actionIcon,
-                    contentDescription = actionIconContentDescription,
-                    tint = MaterialTheme.colorScheme.onSurface,
-                )
+                if (actionIcon != null) {
+                    Icon(
+                        imageVector = actionIcon,
+                        contentDescription = actionIconContentDescription,
+                        tint = MaterialTheme.colorScheme.onSurface,
+                    )
+                }
             }
         },
         colors = colors,

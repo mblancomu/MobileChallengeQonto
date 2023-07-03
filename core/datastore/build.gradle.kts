@@ -1,6 +1,5 @@
 plugins {
     id("mobilechallenge.android.library")
-    id("mobilechallenge.android.library.jacoco")
     id("mobilechallenge.android.hilt")
 }
 
@@ -19,6 +18,5 @@ dependencies {
     implementation(libs.androidx.dataStore.preferences)
     implementation(libs.kotlinx.coroutines.android)
 
-//    testImplementation(project(":core:datastore-test"))
     testImplementation(project(":core:testing"))
 }

@@ -1,7 +1,6 @@
 plugins {
     id("mobilechallenge.android.library")
     id("mobilechallenge.android.library.compose")
-    id("mobilechallenge.android.library.jacoco")
 }
 
 android {
