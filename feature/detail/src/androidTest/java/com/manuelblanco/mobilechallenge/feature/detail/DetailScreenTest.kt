@@ -13,12 +13,17 @@ import org.junit.Assert.*
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  */
-@RunWith(AndroidJUnit4::class)
-class ExampleInstrumentedTest {
+class DetailScreenTest {
+
+    @get:Rule
+    val composeTestRule = createAndroidComposeRule<ComponentActivity>()
     @Test
-    fun useAppContext() {
-        // Context of the app under test.
-        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.manuelblanco.mobilechallenge.feature.detail.test", appContext.packageName)
+    fun whenHasProfile_showsProfiles() {
+        composeTestRule.setContent {
+            DetailScreen(
+
+            )
+        }
+
     }
 }

@@ -27,7 +27,7 @@ import com.manuelblanco.mobilechallenge.feature.detail.components.SuccessProfile
 /**
  * Created by Manuel Blanco Murillo on 30/6/23.
  */
-
+@VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
 @Composable
 fun DetailScreen(
     profileId: String,
