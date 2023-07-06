@@ -40,6 +40,7 @@ import com.manuelblanco.mobilechallenge.feature.profiles.ProfilesScreen
 @Composable
 fun MainScreenApp(
     networkMonitor: NetworkMonitor,
+    navController: NavHostController,
     appState: MainScreenAppState = rememberMainAppState(
         networkMonitor,
     )
@@ -78,7 +79,9 @@ fun MainScreenApp(
 
         ) { padding ->
             Box(modifier = Modifier.padding(padding).fillMaxSize(), contentAlignment = Alignment.Center) {
-                ProfilesScreen()
+                ProfilesScreen(
+                    navController = navController
+                )
             }
         }
     }

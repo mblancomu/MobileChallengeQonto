@@ -5,6 +5,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.map
+import com.manuelblanco.mobilechallenge.core.data.mediator.PAGE_SIZE
 import com.manuelblanco.mobilechallenge.core.data.mediator.ProfilesRemoteMediator
 import com.manuelblanco.mobilechallenge.core.database.dao.ProfileDao
 import com.manuelblanco.mobilechallenge.core.database.model.asExtendedProfile
@@ -20,8 +21,6 @@ import javax.inject.Inject
  * Created by Manuel Blanco Murillo on 27/6/23.
 */
 
-const val PAGE_SIZE = 20
-
 class ProfilesRepositoryImpl @Inject constructor(
     private val profileDao: ProfileDao,
     private val remoteMediator: ProfilesRemoteMediator
@@ -31,7 +30,7 @@ class ProfilesRepositoryImpl @Inject constructor(
     override fun getProfiles(): Flow<PagingData<Profile>> =
         Pager(
             config = PagingConfig(
-                pageSize = PAGE_SIZE,
+                pageSize = 4,
                 enablePlaceholders = true,
             ),
             pagingSourceFactory = {

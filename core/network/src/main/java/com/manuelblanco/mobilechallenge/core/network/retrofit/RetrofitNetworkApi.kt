@@ -11,9 +11,12 @@ import retrofit2.http.Query
  */
 interface RetrofitNetworkApi {
 
-    @GET("/api/?seed=foobar")
+    @GET("/api/")
     suspend fun getProfiles(
-        @Query("page") page: Int?
+        @Query("page") page: Int?,
+        @Query("results") results: Int,
+        @Query("seed") seed: String,
+        @Query("inc") fields: String
     ): NetworkProfileResults
 
     @GET("/api/")

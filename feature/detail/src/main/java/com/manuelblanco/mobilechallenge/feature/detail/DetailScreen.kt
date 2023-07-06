@@ -1,8 +1,8 @@
 package com.manuelblanco.mobilechallenge.feature.detail
 
+import androidx.annotation.VisibleForTesting
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -21,6 +21,7 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.NavController
 import com.manuelblanco.mobilechallenge.core.ui.components.ErrorScreen
 import com.manuelblanco.mobilechallenge.feature.detail.components.SuccessProfileScreen
 
@@ -31,8 +32,8 @@ import com.manuelblanco.mobilechallenge.feature.detail.components.SuccessProfile
 @Composable
 fun DetailScreen(
     profileId: String,
-    viewModel: DetailScreenViewModel = hiltViewModel(),
-    onClose: () -> Unit
+    navController: NavController,
+    viewModel: DetailScreenViewModel = hiltViewModel()
 ) {
     val state: DetailScreenState by viewModel.state.collectAsStateWithLifecycle()
     val profile = state.profile
@@ -43,7 +44,7 @@ fun DetailScreen(
 
     Dialog(
         onDismissRequest = {
-            onClose()
+            navController.popBackStack()
         },
         properties = DialogProperties(
             usePlatformDefaultWidth = false
@@ -54,7 +55,7 @@ fun DetailScreen(
                 .padding(horizontal = 8.dp, vertical = 8.dp)
                 .fillMaxWidth(),
             shape = RoundedCornerShape(corner = CornerSize(16.dp)),
-        ){
+        ) {
             Surface(
                 modifier = Modifier.fillMaxWidth(),
                 color = Color.Transparent
