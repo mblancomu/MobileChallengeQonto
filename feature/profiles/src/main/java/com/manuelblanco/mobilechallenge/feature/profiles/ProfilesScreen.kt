@@ -16,38 +16,28 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
-import com.manuelblanco.mobilechallenge.feature.detail.DetailScreen
 import com.manuelblanco.mobilechallenge.feature.profiles.components.ProfileItem
+import com.manuelblanco.mobilechallenge.feature.profiles.navigation.navigateToProfile
 
 /**
  * Created by Manuel Blanco Murillo on 27/6/23.
  */
 @Composable
-fun ProfilesScreen() {
-    val profilesViewModel = hiltViewModel<ProfilesViewModel>()
+fun ProfilesScreen(
+    navController: NavHostController,
+    profilesViewModel: ProfilesViewModel = hiltViewModel()
+) {
 
     val profiles = profilesViewModel.getProfiles().collectAsLazyPagingItems()
-    var showDetailDialog by remember { mutableStateOf(false) }
-    var profileId by remember { mutableStateOf("") }
-
-    when {
-        showDetailDialog -> DetailScreen(profileId, onClose = {
-            showDetailDialog = false
-            profileId = ""
-        })
-    }
 
     LazyColumn(
         modifier = Modifier.fillMaxSize()
@@ -57,8 +47,7 @@ fun ProfilesScreen() {
         ) { profile ->
             profile?.let {
                 ProfileItem(profile, navigateToProfile = {
-                    profileId = profile.id
-                    showDetailDialog = true
+                    navController.navigateToProfile(profile.id)
                 })
                 Divider()
             }

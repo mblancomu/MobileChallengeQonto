@@ -20,7 +20,7 @@ class ProfilePagingSource(private val service: RetrofitNetworkApi) : PagingSourc
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, ProfileEntity> {
         val page = params.key ?: STARTING_PAGE_INDEX
         return try {
-            val response = service.getProfiles(page = page)
+            val response = service.getProfiles(page = page, results = PAGE_SIZE, seed = SEED, fields = FIELDS)
             LoadResult.Page(
                 data = response.asEntities(),
                 prevKey = if (page == STARTING_PAGE_INDEX) null else page - 1,

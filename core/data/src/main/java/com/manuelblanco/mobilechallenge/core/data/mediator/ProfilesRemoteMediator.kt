@@ -19,6 +19,11 @@ import javax.inject.Inject
 /**
  * Created by Manuel Blanco Murillo on 28/6/23.
  */
+
+const val PAGE_SIZE = 20
+const val FIELDS = "info,login,email,location,name,picture"
+const val SEED = "profile"
+
 @OptIn(ExperimentalPagingApi::class)
 class ProfilesRemoteMediator @Inject constructor(
     private val profilesApiService: RetrofitNetworkApi,
@@ -130,7 +135,7 @@ class ProfilesRemoteMediator @Inject constructor(
         }
 
         try {
-            val apiResponse = profilesApiService.getProfiles(page = page)
+            val apiResponse = profilesApiService.getProfiles(page = page, results = PAGE_SIZE, seed = SEED, fields = FIELDS)
 
             val profiles = apiResponse.asEntities()
             val endOfPaginationReached = profiles.isEmpty()

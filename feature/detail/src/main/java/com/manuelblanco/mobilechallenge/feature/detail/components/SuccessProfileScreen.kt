@@ -26,14 +26,12 @@ fun SuccessProfileScreen(profile: ExtendedProfile) {
                         .fillMaxSize()
                         .verticalScroll(scrollState),
                 ) {
-                    if (profile != null) {
-                        ProfileHeader(
-                            scrollState,
-                            profile.imageUrl,
-                            this@BoxWithConstraints.maxHeight
-                        )
-                        ProfileContent(profile, this@BoxWithConstraints.maxHeight)
-                    }
+                    ProfileHeader(
+                        scrollState,
+                        profile.imageUrl,
+                        this@BoxWithConstraints.maxHeight
+                    )
+                    ProfileContent(profile, this@BoxWithConstraints.maxHeight)
                 }
             }
 

@@ -9,8 +9,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
 import coil.compose.rememberAsyncImagePainter
+import com.manuelblanco.mobilechallenge.feature.detail.R
 
 /**
  * Created by Manuel Blanco Murillo on 30/6/23.
@@ -27,6 +29,7 @@ fun ProfileHeader(
     val offsetDp = with(LocalDensity.current) { offset.toDp() }
     val painter = rememberAsyncImagePainter(
         model = imageUrl,
+        placeholder = painterResource(R.drawable.placeholder)
     )
 
     Image(
