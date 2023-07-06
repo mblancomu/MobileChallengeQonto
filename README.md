@@ -1,8 +1,6 @@
 # Manuel Blanco Challenge
 ## Creating an offline app
 
-[![N|Solid](https://mentorday.es/wp-content/uploads/2022/10/logo-qonto-e1665057528763.png)
-
 ## Challenge
 
 Build an application that fetches data from this API - [https://randomuser.me](https://randomuser.me/) - and displays a list of Users.
